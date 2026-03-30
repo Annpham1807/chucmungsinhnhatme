@@ -1,0 +1,58 @@
+"Mẹ là người tuyệt vời nhất 🌸",
+"Con yêu mẹ rất nhiều 💕",
+"Chúc mẹ luôn bình an 🍀",
+"Mong mẹ luôn trẻ đẹp ✨",
+"Sinh nhật vui vẻ mẹ nhé 🎂"
+];
+
+function start() {
+    const intro = document.getElementById("intro");
+    intro.classList.add("fadeOut");
+
+    setTimeout(() => {
+        intro.style.display = "none";
+
+        const section = document.getElementById("giftSection");
+        section.classList.add("show");
+
+        messages.forEach((text, i) => {
+            let gift = document.createElement("div");
+            gift.classList.add("gift");
+
+            let msg = document.createElement("div");
+            msg.classList.add("message");
+            msg.innerText = text;
+
+            gift.appendChild(msg);
+
+            setTimeout(() => {
+                gift.classList.add("showGift");
+            }, i * 150);
+
+            gift.onclick = function () {
+                gift.classList.add("open");
+                createHearts();
+            };
+
+            section.appendChild(gift);
+        });
+
+    }, 1000);
+}
+
+function createHearts() {
+    for (let i = 0; i < 10; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random()*20+10) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
